@@ -6,10 +6,12 @@ var gulp = require('gulp'),
 
 gulp.task('sassCompile', function(){
     gulp.src(scssFolder)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest(cssFolder));
 });
 
 gulp.task('watcher', function(){
     gulp.watch(scssFolder, ['sassCompile']);
 });
+
+gulp.task('default', ['sassCompile', 'watcher']);

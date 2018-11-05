@@ -1,0 +1,243 @@
+@import "vars.scss";
+@import "animation.scss";
+
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.main-wrapper{
+    background-color: $backGroundColor;
+    .left-menu{
+        .close-menu{
+            color: #fff;
+            z-index: 20;
+            position: fixed;
+            top: 10vh;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            height: 80px;
+            width: 80px;
+            text-align: center;
+            font-size: 30px;
+            cursor: pointer;
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            &.active{
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            &:before {
+                @extend %neonLight;
+                font-family: FontAwesome;
+                content: "\f067";
+                font-size: 35px;
+                animation: neonLighting 1s infinite linear;
+            }
+            // &:after{
+            //     @extend %neonLight;
+            //     font-family: FontAwesome;
+            //     content: "\f00d";
+            //     font-size: 35px;
+            // }
+        }
+        .menu {
+          z-index: 20;
+          position: fixed;
+          top: 20vh;
+          left: 0;
+          height: 100vh;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: none;
+          &.active{
+              display: block;
+          }
+        }
+    }
+    .menu li a{
+        @extend %neonLight;
+        display: block;
+        width: 80px;
+        line-height: 80px;
+        text-align: center;
+        color: $textColor;
+        position: relative;
+        background: $backGroundColor;;
+        border: 3px solid $textColor;
+        &:before{
+            font-family: FontAwesome;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+        }
+        &.active{
+            color: $textActive;
+            &:after{
+                position:absolute;
+                left:5em;
+                top:0;
+                content:"";
+                border:2.5em solid transparent;
+                border-left-color:$neonColor;
+                border-width: 2.5em 1em
+            }
+        }
+        &:hover{
+            color: $textActive;
+        }
+    }
+    .menu li a.about:before {
+        content: "\f007";
+    }
+    .menu li a.home:before {
+        content: "\f015";
+    }
+    .menu li a.contact:before {
+        content: "\f003";
+    }
+    .menu li a.archive:before {
+        content: "\f187";
+    }
+
+    .header-wrapper{
+        /*@extend %flex;*/
+        height: 90vh;
+        position: relative;
+        .upper-head{
+                text-align: right;
+                padding-top: 100px;
+                h2{
+                    font-size: 60px;
+                    color: $neonColor;
+                    text-transform: uppercase;
+                    animation: neonLighting 4s infinite linear;
+                }
+        }
+        .lower-head{
+            top: 50%;
+            left: 30%;
+            color: $textColor;
+            position: absolute;
+            text-align: center;
+            //animation:  neonLighting 3s infinite linear;
+            h1{
+                @extend %neonLight;
+            }
+            .btn-sign-in{
+                background-color: $backGroundColor;
+                color: $textColor;
+                height: 45px;
+                width: 135px;
+                border-color: $neonColor;
+                animation: neonLighting 1s infinite linear;
+                &:hover{
+                    //animation: signInHover 0.5s infinite linear, neonLighting 1s infinite linear;
+                    color:$textActive;
+                }
+            }
+        }
+    }
+    .separator{
+        height: 100px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        &.neon{
+            background: $neonColor;
+        }
+    }
+    .section-two{
+        h3{
+            color: $neonColor;
+            @extend %neonLight;
+        }
+        .text-item{
+            color: $textColor;
+            margin: 30px 0;
+            display: none;
+            &.active{
+                display: block;
+            }
+        }
+        img{
+            max-height: 650px;
+        }
+    }
+}
+
+@keyframes signInHover{
+    0% {
+        background: linear-gradient(
+            to right,
+            $backGroundColor 0%,
+            $neonColor 20%,
+            $neonColor 20%,
+            $backGroundColor 20%
+        );
+    }
+    45% {
+        background: linear-gradient(
+            to right,
+            $backGroundColor 20%,
+            $neonColor 40%,
+            $neonColor 40%,
+            $backGroundColor 40%
+        );
+    }
+    75% {
+        background: linear-gradient(
+            to right,
+            $backGroundColor 40%,
+            $neonColor 60%,
+            $neonColor 60%,
+            $backGroundColor 60%
+        );
+    }
+    100% {
+        background: linear-gradient(
+            to right,
+            $backGroundColor 60%,
+            $neonColor 80%,
+            $neonColor 80%,
+            $backGroundColor 80%
+        );
+    }
+    100%{
+        background: linear-gradient(
+            to right,
+            $backGroundColor 80%,
+            $neonColor 100%,
+            $neonColor 100%,
+            $backGroundColor 100%
+        );
+    }
+}
+
+@keyframes neonLighting{
+    0% {
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+    50% {
+        text-shadow: 0 0 2px $neonColor,
+                     0 0 4px $neonColor,
+    }
+    100%{
+        text-shadow: 0 0 8px $neonColor,
+                     0 0 10px $neonColor,
+                     0 0 12px $neonColor,
+    }
+}
